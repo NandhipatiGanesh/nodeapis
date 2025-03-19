@@ -12,6 +12,16 @@ const db = mysql.createPool({
     database: 'u892098652_rCn6j'
 });
 
+db.getConnection((err, connection) => {
+    if (err) {
+        console.error("❌ Failed to connect:", err);
+    } else {
+        console.log("✅ Connected to MySQL database!");
+        connection.release();
+    }
+});
+
+
 app.use(cors());
 app.use(express.json());
 
