@@ -24,13 +24,13 @@ app.get("/api/posts", (req, res) => {
     });
 });
 
-db.connect((err) => {
-    if(err){
-        console.error("Database connection failed: ", err);
-        return;
-    } 
-    console.log("Connected to WordPress database!");
-});
+// db.connect((err) => {
+//     if(err){
+//         console.error("Database connection failed: ", err);
+//         return;
+//     } 
+//     console.log("Connected to WordPress database!");
+// });
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
   });
