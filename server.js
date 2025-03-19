@@ -23,6 +23,9 @@ app.get("/api/posts", (req, res) => {
         res.json(results);
     });
 });
+app.get("/", (req, res) => {
+    res.send("welcome to node js apis with wp DB");
+});
 
 // db.connect((err) => {
 //     if(err){
