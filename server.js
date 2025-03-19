@@ -4,8 +4,9 @@ const app = express();
 const port = 5001;
 const cors = require("cors"); 
 
-const db = mysql.createConnection({
-    host: 'srv1132.hstgr.io',  // Use this instead of '127.0.0.1'
+const db = mysql.createPool({
+    connectionLimit: 10, // Handle multiple requests
+    host: 'srv1132.hstgr.io',
     user: 'u892098652_LOATx',
     password: 'nIZX6aNboN',
     database: 'u892098652_rCn6j'
@@ -14,15 +15,6 @@ const db = mysql.createConnection({
 app.use(cors());
 app.use(express.json());
 
-// app.get("/api/posts/", (res, req) => {
-//     db.query("SELECT * FROM wp_posts WHERE post_status = 'publish'", (err, results) => {
-//         if(err){
-//             return res.status(500).json({ error: err.message });
-//         }
-//         res.json(results);
-//     });
-// });
-// ✅ Corrected the order (req, res)
 app.get("/api/posts", (req, res) => {
     db.query("SELECT * FROM wp_posts WHERE post_status = 'publish'", (err, results) => {
         if (err) {
