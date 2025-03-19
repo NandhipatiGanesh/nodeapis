@@ -5,11 +5,13 @@ const port = 5001;
 const cors = require("cors"); 
 
 const db = mysql.createPool({
-    connectionLimit: 10, // Handle multiple requests
-    host: 'srv1132.hstgr.io',
+    host: '193.203.184.7',  // Use IPv4 directly
     user: 'u892098652_LOATx',
     password: 'nIZX6aNboN',
-    database: 'u892098652_rCn6j'
+    database: 'u892098652_rCn6j',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 db.getConnection((err, connection) => {
